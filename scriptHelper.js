@@ -2,9 +2,9 @@
 
 require('cross-fetch/polyfill');
 
-function stripSpace(someInputString) {
-    return someInputString.split(" ").map(item => item.trim()).join('');
-}
+// function stripSpace(someInputString) {
+//     return someInputString.split(" ").map(item => item.trim()).join('');
+// }
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     // Here is the HTML formatting for our mission target div.
