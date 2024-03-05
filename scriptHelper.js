@@ -1,6 +1,6 @@
 // Write your helper functions here!
 
-require('cross-fetch/polyfill');
+// require('cross-fetch/polyfill');
 
 // function stripSpace(someInputString) {
 //     return someInputString.split(" ").map(item => item.trim()).join('');
@@ -15,9 +15,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-    if (testInput === "") {
+    if (testInput == "") {
         return "Empty";
-    } else if (isNaN(Number(testInput))) {
+    } else if (isNaN(testInput)) {
         return "Not a Number";
     } else {
         return "Is a Number";
@@ -25,6 +25,7 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+
     let pilotStatusElem = document.querySelector('#pilotStatus');
     let copilotStatusElem = document.querySelector('#copilotStatus');
     let fuelStatusElem = document.querySelector('#fuelStatus');
@@ -34,12 +35,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     let readyToLaunch = true;
 
-    if (
-        validateInput(pilot) === "Empty" ||
-        validateInput(copilot) === "Empty" ||
-        validateInput(fuelLevel) === "Empty" ||
-        validateInput(cargoLevel) === "Empty"
-    ) {
+    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" ||
+        validateInput(cargoLevel) === "Empty") {
         alert("All fields are required!");
     } else if (
 
