@@ -4,9 +4,8 @@
 
 window.addEventListener("load", function() {
     
-    let form = document.getElementById('form');
+    let form = document.querySelector('form');
     
-
     form.addEventListener("submit", function(event){
         
         event.preventDefault();
@@ -32,8 +31,5 @@ window.addEventListener("load", function() {
         let { name, diameter, star, distance, moons, image } = myPickedPlanet;
         addDestinationInfo(document, name, diameter, star, distance, moons, image);
     })
-
-    
-
     
  });

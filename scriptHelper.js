@@ -1,6 +1,6 @@
 // Write your helper functions here!
 
-// require('cross-fetch/polyfill');
+ require('cross-fetch/polyfill');
 
 // function stripSpace(someInputString) {
 //     return someInputString.split(" ").map(item => item.trim()).join('');
@@ -15,7 +15,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-    if (testInput == "") {
+    // if (testInput == "") { // this fails two tests!!!
+    if (testInput === "") {
         return "Empty";
     } else if (isNaN(testInput)) {
         return "Not a Number";
@@ -35,16 +36,19 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     let readyToLaunch = true;
 
-    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" ||
-        validateInput(cargoLevel) === "Empty") {
+    if (    validateInput(pilot) == "Empty" ||
+            validateInput(copilot) == "Empty" ||
+            validateInput(fuelLevel) == "Empty" ||
+            validateInput(cargoLevel) == "Empty" 
+        ) {
+        readyToLaunch = false;
         alert("All fields are required!");
-    } else if (
-
-        validateInput(pilot) === "Is a Number" ||
-        validateInput(copilot) === "Is a Number" ||
-        validateInput(fuelLevel) === "Not a Number" ||
-        validateInput(cargoLevel) === "Not a Number"
-    ) {
+    } else if ( validateInput(pilot) == "Is a Number" ||
+                validateInput(copilot) == "Is a Number" ||
+                validateInput(fuelLevel) == "Not a Number" ||
+                validateInput(cargoLevel) == "Not a Number"
+            ) {
+        readyToLaunch = false;
         alert("Make sure to enter valid information for each field!");
     } else {
         pilotStatusElem.innerHTML = `Pilot ${pilot} is ready for launch`;
@@ -58,7 +62,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             fuelStatusElem.innerHTML = `Fuel level too low for launch`;
             readyToLaunch = false;
         }
-        if (Number(cargoLevel) < 10000) {
+        if (Number(cargoLevel) <= 10000) {
             cargoStatusElem.innerHTML = `Cargo mass low enough for launch`;
         } else {
             faultyItemsElem.style.visibility = 'visible';
